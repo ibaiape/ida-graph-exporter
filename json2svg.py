@@ -7,7 +7,7 @@
 import sys, json, base64, pprint, svgwrite, zlib
 
 # Fondo blanco, cajas blancas
-DEFAULT_CLR = """
+CLARO_CLR = """
 [DISASM]
 000000	 //Instruction
 aaaaaa	 //Directive
@@ -116,8 +116,7 @@ d4d4d4	 //Message background
 """
 
 # Fondo blanco, cajas oscuras
-'''
-DEFAULT_CLR = """
+OSCURO_CLR = """
 [DISASM]
 000000	 //Instruction
 aaaaaa	 //Directive
@@ -224,7 +223,9 @@ d4d4d4	 //Message background
 00c61a	 //Highlight color
 3d3d3d	 //Hint color
 """
-'''
+
+# Cambiar estilos
+ACTIVO_CLR = CLARO_CLR
 
 def color_format(val):
     line_colors = {
@@ -310,7 +311,7 @@ def parse_clr(fname):
     try:
         dat = open(fname, 'r').read().splitlines()
     except:
-        dat = DEFAULT_CLR.splitlines()  # if file does not exist use the defaults
+        dat = ACTIVO_CLR.splitlines()  # if file does not exist use the defaults
 
     res = []
 
